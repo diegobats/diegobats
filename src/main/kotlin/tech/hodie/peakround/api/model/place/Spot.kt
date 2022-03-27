@@ -3,7 +3,7 @@ package tech.hodie.peakround.api.model.place
 import tech.hodie.peakround.api.model.user.Owner
 
 data class Spot(
-    val id: Long?,
+    var id: Long?,
     val name: String,
     val owner: Owner,
     val icon: String,
