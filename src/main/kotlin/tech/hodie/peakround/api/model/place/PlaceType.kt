@@ -1,4 +1,4 @@
-package tech.hodie.peakround.api.model.products
+package tech.hodie.peakround.api.model.place
 
 enum class PlaceType {
     LOCATION,

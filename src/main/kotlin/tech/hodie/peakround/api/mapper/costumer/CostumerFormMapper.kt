@@ -1,8 +1,9 @@
-package tech.hodie.peakround.api.mapper
+package tech.hodie.peakround.api.mapper.costumer
 
 import org.springframework.stereotype.Component
-import tech.hodie.peakround.api.dto.client.CostumerForm
-import tech.hodie.peakround.api.model.users.Costumer
+import tech.hodie.peakround.api.dto.costumer.CostumerForm
+import tech.hodie.peakround.api.mapper.Mapper
+import tech.hodie.peakround.api.model.user.Costumer
 
 @Component
 class CostumerFormMapper: Mapper<CostumerForm, Costumer> {

@@ -1,4 +1,4 @@
-package tech.hodie.peakround.api.model.users
+package tech.hodie.peakround.api.model.user
 
 data class Costumer(
     override var id: Long?,

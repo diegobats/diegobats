@@ -1,6 +1,4 @@
-package tech.hodie.peakround.api.dto.client
-
-import tech.hodie.peakround.api.model.users.Owner
+package tech.hodie.peakround.api.dto.costumer
 
 data class PlaceView(
     val name: String,

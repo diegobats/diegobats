@@ -1,10 +1,9 @@
-package tech.hodie.peakround.api.model.users
+package tech.hodie.peakround.api.model.user
 
 data class Owner(
-    override val id: Long?,
+    override var id: Long?,
     override val userId: String,
     override val name: String,
-    val ownerUserId: String,
     val documentId: String,
     val contact: String?,
     val address: String,

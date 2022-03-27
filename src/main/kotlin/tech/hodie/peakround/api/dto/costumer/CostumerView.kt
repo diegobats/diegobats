@@ -1,4 +1,4 @@
-package tech.hodie.peakround.api.dto.client
+package tech.hodie.peakround.api.dto.costumer
 
 data class CostumerView(
     val id: String,

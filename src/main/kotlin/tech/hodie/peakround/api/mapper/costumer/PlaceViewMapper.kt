@@ -1,10 +1,11 @@
-package tech.hodie.peakround.api.mapper
+package tech.hodie.peakround.api.mapper.costumer
 
 import org.springframework.stereotype.Component
-import tech.hodie.peakround.api.dto.client.PlaceView
-import tech.hodie.peakround.api.dto.client.SpotView
-import tech.hodie.peakround.api.model.products.Place
-import tech.hodie.peakround.api.model.products.Spot
+import tech.hodie.peakround.api.dto.costumer.PlaceView
+import tech.hodie.peakround.api.dto.costumer.SpotView
+import tech.hodie.peakround.api.mapper.Mapper
+import tech.hodie.peakround.api.model.place.Place
+import tech.hodie.peakround.api.model.place.Spot
 
 @Component
 class PlaceViewMapper: Mapper<Place, PlaceView> {

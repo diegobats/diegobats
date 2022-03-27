@@ -1,6 +1,6 @@
-package tech.hodie.peakround.api.model.products
+package tech.hodie.peakround.api.model.place
 
-import tech.hodie.peakround.api.model.users.Owner
+import tech.hodie.peakround.api.model.user.Owner
 
 data class Spot(
     val id: Long?,

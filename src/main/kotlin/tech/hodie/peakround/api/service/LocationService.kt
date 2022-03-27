@@ -1,13 +1,13 @@
 package tech.hodie.peakround.api.service
 
 import org.springframework.stereotype.Service
-import tech.hodie.peakround.api.dto.client.LocationForm
-import tech.hodie.peakround.api.dto.client.PlaceView
-import tech.hodie.peakround.api.mapper.PlaceViewMapper
-import tech.hodie.peakround.api.model.products.Place
-import tech.hodie.peakround.api.model.products.PlaceType
-import tech.hodie.peakround.api.model.products.Spot
-import tech.hodie.peakround.api.model.users.Owner
+import tech.hodie.peakround.api.dto.costumer.LocationForm
+import tech.hodie.peakround.api.dto.costumer.PlaceView
+import tech.hodie.peakround.api.mapper.costumer.PlaceViewMapper
+import tech.hodie.peakround.api.model.place.Place
+import tech.hodie.peakround.api.model.place.PlaceType
+import tech.hodie.peakround.api.model.place.Spot
+import tech.hodie.peakround.api.model.user.Owner
 import java.util.HashMap
 
 @Service
@@ -22,15 +22,15 @@ class LocationService(private val costumerService: CostumerService, private val 
 
     private fun customPlace(form: LocationForm): Place {
         val mockOwner = Owner(
-            324,
-            "user2138",
-            "myLocation",
-            "mockOwnerUserId",
-            "rg12345",
-            "contactMock",
-            "addressMock",
-            "phoneMock",
-            "emailMock"
+            0,
+            "user0",
+            "mockUser",
+            "MockDocumentId",
+            "MockContact",
+            "MockAddress",
+            "MockPhone",
+            "MockEmail",
+            hashMapOf("userXYZ" to "facebook")
         )
 
         val mockSpot = Spot(

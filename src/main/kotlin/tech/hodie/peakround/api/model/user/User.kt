@@ -1,4 +1,4 @@
-package tech.hodie.peakround.api.model.users
+package tech.hodie.peakround.api.model.user
 
 sealed interface User{
     val id: Long?

@@ -1,11 +1,11 @@
 package tech.hodie.peakround.api.service
 
 import org.springframework.stereotype.Service
-import tech.hodie.peakround.api.dto.client.CostumerForm
-import tech.hodie.peakround.api.dto.client.CostumerView
-import tech.hodie.peakround.api.mapper.CostumerFormMapper
-import tech.hodie.peakround.api.mapper.CostumerViewMapper
-import tech.hodie.peakround.api.model.users.Costumer
+import tech.hodie.peakround.api.dto.costumer.CostumerForm
+import tech.hodie.peakround.api.dto.costumer.CostumerView
+import tech.hodie.peakround.api.mapper.costumer.CostumerFormMapper
+import tech.hodie.peakround.api.mapper.costumer.CostumerViewMapper
+import tech.hodie.peakround.api.model.user.Costumer
 
 @Service
 class CostumerService(private val costumerFormMapper: CostumerFormMapper, private val costumerViewMapper: CostumerViewMapper) {

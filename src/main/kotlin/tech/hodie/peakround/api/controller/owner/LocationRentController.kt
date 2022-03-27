@@ -1,14 +1,41 @@
-package tech.hodie.peakround.api.controller.owner
+package tech.hodie.peakround.api.controller.costumer
 
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.*
+import org.springframework.web.util.UriComponentsBuilder
+import tech.hodie.peakround.api.dto.owner.LocationRentForm
+import tech.hodie.peakround.api.dto.owner.LocationRentView
+import tech.hodie.peakround.api.service.LocationRentService
+import javax.validation.Valid
+
 
 @RestController
-@RequestMapping("/rent")
-class RentController {
-    @GetMapping
-    fun get(): String {
-        return "Return the Rent"
+@RequestMapping("/locationRent")
+class LocationRentController(private val service: LocationRentService) {
+
+    @GetMapping()
+    fun list(): List<LocationRentView> {
+        return service.all()
+    }
+
+    @GetMapping("/{rentId}")
+    fun get(@PathVariable rentId: String): LocationRentView {
+        return service.get(rentId)
+    }
+
+    @PatchMapping
+    fun patch(@RequestBody @Valid form: LocationRentForm): ResponseEntity<LocationRentView> {
+        val data = service.update(form)
+        return ResponseEntity.ok(data)
+    }
+
+    @PostMapping
+    fun post(
+        @RequestBody @Valid form: LocationRentForm,
+        uriBuilder: UriComponentsBuilder
+    ): ResponseEntity<LocationRentView> {
+        val view: LocationRentView = service.create(form)
+        val uri = uriBuilder.path("/rent/${view.rentId}").build().toUri()
+        return ResponseEntity.created(uri).body(view)
     }
 }

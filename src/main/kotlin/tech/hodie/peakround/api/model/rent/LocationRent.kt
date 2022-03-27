@@ -1,11 +1,12 @@
 package tech.hodie.peakround.api.model.rent
 
-import tech.hodie.peakround.api.model.products.Spot
-import tech.hodie.peakround.api.model.users.Owner
+import tech.hodie.peakround.api.model.place.Spot
+import tech.hodie.peakround.api.model.user.Owner
 import java.time.LocalDateTime
 
 data class LocationRent(
-    override val id: Long?,
+    override var id: Long?,
+    override val rentId: String,
     override val owner: Owner,
     override val status: RentStatus,
     override val start: LocalDateTime,

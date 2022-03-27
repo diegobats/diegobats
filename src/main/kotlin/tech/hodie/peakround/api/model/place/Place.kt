@@ -1,7 +1,6 @@
-package tech.hodie.peakround.api.model.products
+package tech.hodie.peakround.api.model.place
 
-import tech.hodie.peakround.api.model.users.Costumer
-import tech.hodie.peakround.api.model.users.User
+import tech.hodie.peakround.api.model.user.User
 
 data class Place(
     val id: Long?,

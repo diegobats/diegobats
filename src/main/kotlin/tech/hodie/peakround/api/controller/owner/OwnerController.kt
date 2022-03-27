@@ -1,36 +1,36 @@
-package tech.hodie.peakround.api.controller.costumer
+package tech.hodie.peakround.api.controller.owner
 
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.util.UriComponentsBuilder
-import tech.hodie.peakround.api.dto.costumer.CostumerForm
-import tech.hodie.peakround.api.dto.costumer.CostumerView
-import tech.hodie.peakround.api.service.CostumerService
+import tech.hodie.peakround.api.dto.owner.OwnerForm
+import tech.hodie.peakround.api.dto.owner.OwnerView
+import tech.hodie.peakround.api.service.OwnerService
 import javax.validation.Valid
 
 
 @RestController
-@RequestMapping("/costumer")
-class CostumerController(private val service: CostumerService) {
+@RequestMapping("/owner")
+class OwnerController(private val service: OwnerService) {
 
     @GetMapping("/{id}")
-    fun get(@PathVariable id: String): CostumerView {
+    fun get(@PathVariable id: String): OwnerView {
         return service.get(id)
     }
 
     @PatchMapping
-    fun patch(@RequestBody @Valid costumerForm: CostumerForm): ResponseEntity<CostumerView> {
-        val data = service.update(costumerForm)
+    fun patch(@RequestBody @Valid ownerForm: OwnerForm): ResponseEntity<OwnerView> {
+        val data = service.update(ownerForm)
         return ResponseEntity.ok(data)
     }
 
     @PostMapping
     fun post(
-        @RequestBody @Valid costumerForm: CostumerForm,
+        @RequestBody @Valid ownerForm: OwnerForm,
         uriBuilder: UriComponentsBuilder
-    ): ResponseEntity<CostumerView> {
-        val costumerView: CostumerView = service.create(costumerForm)
-        val uri = uriBuilder.path("/user/${costumerView.id}").build().toUri()
-        return ResponseEntity.created(uri).body(costumerView)
+    ): ResponseEntity<OwnerView> {
+        val ownerView: OwnerView = service.create(ownerForm)
+        val uri = uriBuilder.path("/owner/${ownerView.userId}").build().toUri()
+        return ResponseEntity.created(uri).body(ownerView)
     }
 }
