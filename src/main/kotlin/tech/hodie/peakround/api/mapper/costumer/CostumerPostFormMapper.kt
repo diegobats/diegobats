@@ -1,16 +1,22 @@
 package tech.hodie.peakround.api.mapper.costumer
 
 import org.springframework.stereotype.Component
-import tech.hodie.peakround.api.dto.costumer.CostumerForm
+import tech.hodie.peakround.api.dto.costumer.CostumerPostForm
 import tech.hodie.peakround.api.mapper.Mapper
 import tech.hodie.peakround.api.model.user.Costumer
+import java.time.Instant
+import java.util.*
 
 @Component
-class CostumerFormMapper: Mapper<CostumerForm, Costumer> {
-    override fun map(t: CostumerForm): Costumer {
+class CostumerFormMapper: Mapper<CostumerPostForm, Costumer> {
+    override fun map(t: CostumerPostForm): Costumer {
+        val userId = UUID.randomUUID()
+        val createdTime = Instant.now().toEpochMilli()
         return Costumer(
             id = null,
-            t.id,
+            userId,
+            createdTime,
+            createdTime,
             t.name,
             t.nickName,
             t.age,
