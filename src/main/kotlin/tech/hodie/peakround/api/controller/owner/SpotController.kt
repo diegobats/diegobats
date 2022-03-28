@@ -3,7 +3,8 @@ package tech.hodie.peakround.api.controller.owner
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.util.UriComponentsBuilder
-import tech.hodie.peakround.api.dto.owner.SpotForm
+import tech.hodie.peakround.api.dto.owner.SpotPatchForm
+import tech.hodie.peakround.api.dto.owner.SpotPostForm
 import tech.hodie.peakround.api.dto.owner.SpotView
 import tech.hodie.peakround.api.service.SpotService
 import javax.validation.Valid
@@ -18,19 +19,19 @@ class SpotController(private val service: SpotService) {
     }
 
     @GetMapping("/{spotId}")
-    fun get(@PathVariable spotId: Long): SpotView {
+    fun get(@PathVariable spotId: String): SpotView {
         return service.get(spotId)
     }
 
     @PatchMapping
-    fun patch(@RequestBody @Valid form: SpotForm): ResponseEntity<SpotView> {
+    fun patch(@RequestBody @Valid form: SpotPatchForm): ResponseEntity<SpotView> {
         val data = service.update(form)
         return ResponseEntity.ok(data)
     }
 
     @PostMapping
     fun post(
-        @RequestBody @Valid form: SpotForm,
+        @RequestBody @Valid form: SpotPostForm,
         uriBuilder: UriComponentsBuilder
     ): ResponseEntity<SpotView> {
         val view: SpotView = service.create(form)

@@ -8,7 +8,6 @@ import tech.hodie.peakround.api.model.place.Spot
 @Component
 class SpotViewMapper(private val ownerViewMapper: OwnerViewMapper): Mapper<Spot, SpotView> {
     override fun map(t: Spot): SpotView {
-        val ownerView = ownerViewMapper.map(t.owner)
-        return SpotView(t.id, t.name, ownerView, t.icon, t.source, t.tags)
+        return SpotView(t.spotId, t.name, t.icon, t.source, t.tags)
     }
 }

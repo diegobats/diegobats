@@ -19,6 +19,11 @@ class OwnerService(private val ownerFormPostMapper: OwnerFormPostMapper, private
         return (ownerViewMapper.map(user))
     }
 
+    fun owner(id: String): Owner {
+        val user = owners.stream().filter { t -> t.userId == id }.findFirst().get()
+        return (user)
+    }
+
     fun update(form: OwnerPatchForm): OwnerView? {
         val oldUser = owners.stream().filter { t -> t.userId == form.id }.findFirst().get()
         val newUser = Owner(

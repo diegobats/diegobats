@@ -6,7 +6,7 @@ import javax.validation.constraints.NotEmpty
 
 data class LocationRentForm(
     @field:NotEmpty val rentId: String,
-    @field:NotEmpty val spotId: Long,
+    @field:NotEmpty val spotId: String,
     @field:NotEmpty val status: RentStatus,
     @field:NotEmpty val start: LocalDateTime,
     @field:NotEmpty val end: LocalDateTime,

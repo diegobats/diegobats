@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service
 import tech.hodie.peakround.api.dto.costumer.CostumerPatchForm
 import tech.hodie.peakround.api.dto.costumer.CostumerPostForm
 import tech.hodie.peakround.api.dto.costumer.CostumerView
-import tech.hodie.peakround.api.mapper.costumer.CostumerPatchFormMapper
 import tech.hodie.peakround.api.mapper.costumer.CostumerPostFormMapper
 import tech.hodie.peakround.api.mapper.costumer.CostumerViewMapper
 import tech.hodie.peakround.api.model.user.Costumer
