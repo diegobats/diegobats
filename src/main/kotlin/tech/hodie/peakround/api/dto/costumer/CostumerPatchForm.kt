@@ -2,7 +2,7 @@ package tech.hodie.peakround.api.dto.costumer
 
 import javax.validation.constraints.NotEmpty
 
-data class CostumerForm(
+data class CostumerPatchForm(
     @field:NotEmpty
     val id: String,
     val name: String? = null,

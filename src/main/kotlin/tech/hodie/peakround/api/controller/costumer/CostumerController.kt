@@ -3,7 +3,8 @@ package tech.hodie.peakround.api.controller.costumer
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.util.UriComponentsBuilder
-import tech.hodie.peakround.api.dto.costumer.CostumerForm
+import tech.hodie.peakround.api.dto.costumer.CostumerPatchForm
+import tech.hodie.peakround.api.dto.costumer.CostumerPostForm
 import tech.hodie.peakround.api.dto.costumer.CostumerView
 import tech.hodie.peakround.api.service.CostumerService
 import javax.validation.Valid
@@ -13,24 +14,24 @@ import javax.validation.Valid
 @RequestMapping("/costumer")
 class CostumerController(private val service: CostumerService) {
 
-    @GetMapping("/{id}")
-    fun get(@PathVariable id: String): CostumerView {
-        return service.get(id)
+    @GetMapping("/{userId}")
+    fun get(@PathVariable userId:String): CostumerView {
+        return service.get(userId)
     }
 
     @PatchMapping
-    fun patch(@RequestBody @Valid costumerForm: CostumerForm): ResponseEntity<CostumerView> {
-        val data = service.update(costumerForm)
+    fun patch(@RequestBody @Valid form: CostumerPatchForm): ResponseEntity<CostumerView> {
+        val data = service.update(form)
         return ResponseEntity.ok(data)
     }
 
     @PostMapping
     fun post(
-        @RequestBody @Valid costumerForm: CostumerForm,
+        @RequestBody @Valid costumerForm: CostumerPostForm,
         uriBuilder: UriComponentsBuilder
     ): ResponseEntity<CostumerView> {
         val costumerView: CostumerView = service.create(costumerForm)
-        val uri = uriBuilder.path("/user/${costumerView.id}").build().toUri()
+        val uri = uriBuilder.path("/costumer/${costumerView.id}").build().toUri()
         return ResponseEntity.created(uri).body(costumerView)
     }
 }

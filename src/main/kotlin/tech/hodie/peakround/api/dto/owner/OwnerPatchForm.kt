@@ -2,14 +2,14 @@ package tech.hodie.peakround.api.dto.owner
 
 import javax.validation.constraints.NotEmpty
 
-data class OwnerForm(
-    @field:NotEmpty val userId: String,
-    @field:NotEmpty val name: String,
-    @field:NotEmpty val documentId: String,
-    val contact: String?,
-    @field:NotEmpty val address: String,
-    @field:NotEmpty val phone: String,
-    @field:NotEmpty val email: String,
+data class OwnerPatchForm(
+    @field:NotEmpty val id: String,
+    val name: String? = null,
+    val documentId: String? = null,
+    val contact: String? = null,
+    val address: String? = null,
+    val phone: String? = null,
+    val email: String? = null,
     val social: HashMap<String, String>? = null
 
 )

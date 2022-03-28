@@ -7,14 +7,21 @@ import tech.hodie.peakround.api.mapper.owner.SpotFormMapper
 import tech.hodie.peakround.api.mapper.owner.SpotViewMapper
 import tech.hodie.peakround.api.model.place.Spot
 import tech.hodie.peakround.api.model.user.Owner
+import java.time.Instant
+import java.util.*
 import kotlin.streams.toList
 
 @Service
 class SpotService(private val spotFormMapper: SpotFormMapper, private val spotViewMapper: SpotViewMapper) {
 
+    val userId = UUID.randomUUID().toString()
+    val createdTime = Instant.now().toEpochMilli()
+
     val mockOwner = Owner(
         0,
-        "user0",
+        userId,
+        createdTime,
+        createdTime,
         "mockUser",
         "MockDocumentId",
         "MockContact",
@@ -26,7 +33,10 @@ class SpotService(private val spotFormMapper: SpotFormMapper, private val spotVi
 
     val mockSpot = Spot(
         0,
-        "MockSpotName",
+        userId,
+        createdTime,
+        createdTime,
+        "mockName",
         mockOwner,
         "iconMock",
         "sourceMock"
@@ -58,6 +68,10 @@ class SpotService(private val spotFormMapper: SpotFormMapper, private val spotVi
         spot.id = spots.size.toLong()
         spots.add(spot)
         return (get(spot.id!!))
+    }
+
+    fun spot(spotId: Long): Spot {
+        return spots.stream().filter { t -> t.id == spotId }.findFirst().get()
     }
 
 }

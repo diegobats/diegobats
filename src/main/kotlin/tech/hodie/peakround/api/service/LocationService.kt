@@ -8,7 +8,8 @@ import tech.hodie.peakround.api.model.place.Place
 import tech.hodie.peakround.api.model.place.PlaceType
 import tech.hodie.peakround.api.model.place.Spot
 import tech.hodie.peakround.api.model.user.Owner
-import java.util.HashMap
+import java.time.Instant
+import java.util.*
 
 @Service
 class LocationService(private val costumerService: CostumerService, private val placeViewMapper: PlaceViewMapper) {
@@ -21,9 +22,13 @@ class LocationService(private val costumerService: CostumerService, private val 
     }
 
     private fun customPlace(form: LocationForm): Place {
+        val userId = UUID.randomUUID().toString()
+        val createdTime = Instant.now().toEpochMilli()
         val mockOwner = Owner(
             0,
-            "user0",
+            userId,
+            createdTime,
+            createdTime,
             "mockUser",
             "MockDocumentId",
             "MockContact",
@@ -35,6 +40,9 @@ class LocationService(private val costumerService: CostumerService, private val 
 
         val mockSpot = Spot(
             1,
+            userId,
+            createdTime,
+            createdTime,
             "MockSpotName",
             mockOwner,
             "iconMock",
@@ -44,7 +52,10 @@ class LocationService(private val costumerService: CostumerService, private val 
 
         val mockPlace = Place(
             1,
-            "mockPlaceName",
+            userId,
+            createdTime,
+            createdTime,
+            "MockName",
             costumerService.costumer(form.id),
             PlaceType.LOCATION,
             "iconMock",

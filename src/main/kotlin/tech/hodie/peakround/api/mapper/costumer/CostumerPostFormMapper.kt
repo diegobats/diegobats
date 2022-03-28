@@ -8,9 +8,9 @@ import java.time.Instant
 import java.util.*
 
 @Component
-class CostumerFormMapper: Mapper<CostumerPostForm, Costumer> {
+class CostumerPostFormMapper: Mapper<CostumerPostForm, Costumer> {
     override fun map(t: CostumerPostForm): Costumer {
-        val userId = UUID.randomUUID()
+        val userId = UUID.randomUUID().toString()
         val createdTime = Instant.now().toEpochMilli()
         return Costumer(
             id = null,
